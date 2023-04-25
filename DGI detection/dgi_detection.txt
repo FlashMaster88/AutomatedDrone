@@ -1,0 +1,16 @@
+# Write beolw code in new line#
+
+!pip install roboflow
+
+from roboflow import Roboflow
+rf = Roboflow(api_key="n49KKNhMc2F77Kt06jom")
+project = rf.workspace("esigelec").project("drone-7l91f")
+dataset = project.version(2).download("yolov5")
+
+# in training part replace below code
+
+!python train.py --img 640 --batch 16 --epochs 500 --data data.yaml --weights yolov5s.pt
+
+# in predict part
+
+!python detect.py --weights runs/train/exp4/weights/last.pt --img 224 --source ../video.mp4

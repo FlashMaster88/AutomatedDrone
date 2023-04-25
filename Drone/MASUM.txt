@@ -1,0 +1,16 @@
+sudo systemctl start firmwared.service
+
+source ./products/olympe/linux/env/shell
+
+sphinx /opt/parrot-sphinx/usr/share/sphinx/drones/anafi.drone 
+
+
+
+parrot-ue4-empty
+
+parrot-ue4-empty -ams-path=RunPath,Jasper	   #actor spawns
+sphinx-cli param -m world actors pause false       #actor starts running
+
+self.drone(moveBy(front-back, right-left, turn-360, 0, _timeout=10)).wait().success()
+
+
